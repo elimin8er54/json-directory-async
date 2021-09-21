@@ -17,19 +17,24 @@ $ yarn add json-directory-async
 const { Scanner } = require("json-directory-async");
 // or
 import { Scanner } from 'json-directory-async';
-// If using Typescript we also get the type
+
+//Javascript
+
+const scan = new Scanner("C://Users");
+scan.scan("C://Users").then((json) => { console.log(json) });
+
+//Typescript
 import type {Documents} from'json-directory-async';
 
 const scan = new Scanner("C://Users");
-
 scan.scan("C://Users").then((json: Documents) => { console.log(json) });
 
 ```
 
-You can get file information that NodeJS stats allow
+You can get folder and file stat information that NodeJS provides
 
 ```js
-const scan = new Scanner("C://Users",properties:['mode', 'mtime']);
+const scan = new Scanner("C://Users",{showDepth:true,properties:['mode', 'mtime']});
 ```
 
 You can use a callback to get each file and directory as it is being scanned:
@@ -46,16 +51,16 @@ const tree = scan.scan('C://Users', {showExtension:true,showDepth:true,showType:
 List of options
 
 ```json
-//All optional
+//optional
 {
-    showSymbolicLink?: boolean,
-    showSize?: boolean,
-    showType?: boolean,
-    showExtension?: boolean,
-    showDepth?: boolean,
-    showName?: boolean,
-    stats?: ItemStats
-    properties?:['dev','size']//Array of NodejS Stats from the fs module
+    "showSymbolicLink": true,
+    "showSize": true,
+    "showType": true,
+    "showExtension": true,
+    "showDepth": true,
+    "showName": true,
+    "stats": true,
+    "properties":["dev","size"]//Array of NodejS Stats from the fs module
 }
 
 ```
