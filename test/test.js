@@ -10,6 +10,9 @@ describe('json-directory-async', () => {
         const tree = await scan.scan("./test/tree");
 
         expect(tree).to.be.an('object');
+
+
+        console.log(JSON.stringify(tree));
     });
 
     it('should return a Promise', async () => {
@@ -33,14 +36,11 @@ describe('json-directory-async', () => {
         const tree = await scan.scan("./test/tree/AFolder/symlink");
 
         expect(tree).to.have.property("isSymbolicLink", true);
-
     });
 
     it('should return dummy object with size 0 and path', async () => {
         const scan = new Scanner({ showSymbolicLink: true });
-
         const path = paths.normalize("./test/tree/EmptyFolder");
-
         const tree = await scan.scan(path);
 
         expect(tree).to.have.property("size", 0);
@@ -100,6 +100,7 @@ describe('json-directory-async', () => {
         const tree = await scan.scan("./test/tree", (item) => {
             callbackCount++;
         });
+
         expect(callbackCount).to.equal(9);
     });
 

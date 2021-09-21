@@ -12,9 +12,6 @@ scan.promise.scan("C://Users").then((json) => {
     console.log(await scan.promise.scan("C://Users"));
 })();
 
-
-
-
 //------------Async/Await With Input----------------
 import readline from 'readline';
 

@@ -6,7 +6,7 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "start": " tsc -p src && node src/dist/index.js",
+    "start": "tsc -p src && node src/dist/index.js",
     "test": "mocha test"
   },
   "repository": {
@@ -35,8 +35,6 @@
     "babel-loader": "^8.0.0",
     "babel-polyfill": "^6.26.0",
     "chai": "^4.3.4",
-    "clean-webpack-plugin": "^1.0.0",
-    "copy-webpack-plugin": "^6.3.2",
     "cross-env": "^7.0.3",
     "mocha": "^9.1.1",
     "ts-node": "^9.0.0",
