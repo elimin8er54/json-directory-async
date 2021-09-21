@@ -92,7 +92,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+
 
 #File with DB credentials
 src/server/config/db.config.js
