@@ -60,7 +60,7 @@ List of options
     "showDepth": true,
     "showName": true,
     "stats": true,
-    "properties":["dev","size"]//Array of NodejS Stats from the fs module
+    "properties":["dev","size"]
 }
 
 ```
