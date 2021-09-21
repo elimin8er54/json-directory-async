@@ -6,8 +6,9 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "start": "tsc -p src && node src/dist/index.js",
-    "test": "mocha test"
+    "build": "tsc -p src",
+    "start": "npm run build && node src/dist/index.js",
+    "test": "npm run build && mocha test"
   },
   "repository": {
     "type": "git",
