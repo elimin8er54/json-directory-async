@@ -94,14 +94,14 @@ describe('json-directory-async', () => {
     it('should execute the callback 12 times', async () => {
 
         let callbackCount = 0;
-        const TOTAL = 9;
+        const TOTAL = 12;
 
         const scan = new Scanner({ showSymbolicLink: true });
         const tree = await scan.scan("./test/tree", (item) => {
             callbackCount++;
         });
 
-        expect(callbackCount).to.equal(12);
+        expect(callbackCount).to.equal(TOTAL);
     });
 
 });
