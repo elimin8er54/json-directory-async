@@ -91,7 +91,7 @@ describe('json-directory-async', () => {
 
     });
 
-    it('should call the callback 9 times', async () => {
+    it('should call the callback 12 times', async () => {
 
         let callbackCount = 0;
         const TOTAL = 9;
@@ -101,7 +101,7 @@ describe('json-directory-async', () => {
             callbackCount++;
         });
 
-        expect(callbackCount).to.equal(9);
+        expect(callbackCount).to.equal(12);
     });
 
 });
