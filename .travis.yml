@@ -4,10 +4,11 @@ node_js:
 before_deploy: 
 - sudo touch .npmignore
 deploy:
-  skip_cleanup: true
   provider: npm
   email: "$NPM_EMAIL"
   api_key: "$NPM_KEY"
+  skip_cleanup: true
   on:
     tags: true
     branch: main
+    
