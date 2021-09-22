@@ -1,6 +1,6 @@
 {
   "name": "json-directory-async",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Scan your directories and output as json",
   "exports": {
     ".": "./dist/index.js"
@@ -10,6 +10,7 @@
     "start": "npm run build && node src/dist/index.js",
     "test": "npm run build && mocha test"
   },
+  "email": "shaunt.keshishian@gmail.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/elimin8er54/json-directory-async"
