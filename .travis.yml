@@ -1,7 +1,8 @@
 language: node_js
 node_js:
   - 12
-before_deploy: "touch .npmignore"
+before_deploy: 
+- sudo touch .npmignore
 deploy:
   skip_cleanup: true
   provider: npm
