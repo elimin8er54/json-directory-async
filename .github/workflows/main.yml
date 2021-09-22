@@ -16,7 +16,7 @@ jobs:
       - run: npm set init.author.email ${{ secrets.NPM_EMAIL }}
       - run: npm install
       - run: npm test
-      - run: sudo npm cache clean
+      - run: sudo npm cache verify
       - run: npm login
       - run: npm publish
         env:
