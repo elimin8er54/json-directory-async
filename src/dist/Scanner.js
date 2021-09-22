@@ -112,40 +112,43 @@ var Scanner = /** @class */ (function () {
      */
     Scanner.prototype.scans = function (path, depth, currentProgress) {
         return __awaiter(this, void 0, void 0, function () {
-            var item, stats, e_1, dir, e_2, _a, fullSize, lstats, e_3;
+            var item, stats, defaultReturn, e_1, dir, e_2, _a, fullSize, lstats, e_3;
             var _this = this;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _b.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, fs.promises.stat(path_1.default.join(path))];
+                        defaultReturn = { path: path_1.default.normalize(path), size: 0 };
+                        _b.label = 1;
                     case 1:
-                        stats = _b.sent();
-                        return [3 /*break*/, 3];
+                        _b.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, fs.promises.stat(path_1.default.join(path))];
                     case 2:
+                        stats = _b.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
                         e_1 = _b.sent();
                         //I return an error code with a size of 0 because if I return null then there would be no size to calculate.
                         //Which would then cause an error.
-                        return [2 /*return*/, { path: path, size: 0 }];
-                    case 3:
-                        if (!stats.isDirectory()) return [3 /*break*/, 9];
+                        return [2 /*return*/, defaultReturn];
+                    case 4:
+                        if (!stats.isDirectory()) return [3 /*break*/, 10];
                         item = { path: "", children: [] };
                         dir = void 0;
-                        _b.label = 4;
-                    case 4:
-                        _b.trys.push([4, 6, , 7]);
-                        return [4 /*yield*/, fs.promises.readdir(path)];
+                        _b.label = 5;
                     case 5:
-                        dir = _b.sent();
-                        return [3 /*break*/, 7];
+                        _b.trys.push([5, 7, , 8]);
+                        return [4 /*yield*/, fs.promises.readdir(path)];
                     case 6:
-                        e_2 = _b.sent();
-                        return [2 /*return*/, { path: path, size: 0 }];
+                        dir = _b.sent();
+                        return [3 /*break*/, 8];
                     case 7:
+                        e_2 = _b.sent();
+                        return [2 /*return*/, defaultReturn];
+                    case 8:
                         item.path = path_1.default.normalize(path);
                         _a = item;
                         return [4 /*yield*/, Promise.all(dir.map(function (child) { return _this.scans(path + path_1.default.sep + child, depth + 1, currentProgress); }))];
-                    case 8:
+                    case 9:
                         _a.children = _b.sent();
                         fullSize = item.children.reduce(function (previousValue, currentValue) { return previousValue + currentValue.size; }, 0);
                         if (this.showSize) {
@@ -161,8 +164,8 @@ var Scanner = /** @class */ (function () {
                         if (this.showName) {
                             item.name = path_1.default.basename(path);
                         }
-                        return [3 /*break*/, 10];
-                    case 9:
+                        return [3 /*break*/, 11];
+                    case 10:
                         if (stats.isFile()) {
                             item = { path: "" };
                             item.path = path_1.default.normalize(path);
@@ -188,8 +191,8 @@ var Scanner = /** @class */ (function () {
                             //It also keeps Typescript happy.
                             item = { path: "Error", size: 0 };
                         }
-                        _b.label = 10;
-                    case 10:
+                        _b.label = 11;
+                    case 11:
                         if (this.itemStats) {
                             this.itemStats.forEach(function (stat) {
                                 if (!item.properties) {
@@ -198,24 +201,24 @@ var Scanner = /** @class */ (function () {
                                 item.properties[stat] = stats[stat];
                             });
                         }
-                        if (!this.showSymbolicLink) return [3 /*break*/, 15];
+                        if (!this.showSymbolicLink) return [3 /*break*/, 16];
                         lstats = void 0;
-                        _b.label = 11;
-                    case 11:
-                        _b.trys.push([11, 13, , 14]);
-                        return [4 /*yield*/, fs.promises.lstat(path_1.default.join(path))];
+                        _b.label = 12;
                     case 12:
-                        lstats = _b.sent();
-                        return [3 /*break*/, 14];
+                        _b.trys.push([12, 14, , 15]);
+                        return [4 /*yield*/, fs.promises.lstat(path_1.default.join(path))];
                     case 13:
+                        lstats = _b.sent();
+                        return [3 /*break*/, 15];
+                    case 14:
                         e_3 = _b.sent();
                         //I return an error code with a size of 0 because if I return null then there would be no size to calculate.
                         //Which would then cause an error.
-                        return [2 /*return*/, { path: path, size: 0 }];
-                    case 14:
-                        item.isSymbolicLink = lstats.isSymbolicLink();
-                        _b.label = 15;
+                        return [2 /*return*/, defaultReturn];
                     case 15:
+                        item.isSymbolicLink = lstats.isSymbolicLink();
+                        _b.label = 16;
+                    case 16:
                         if (currentProgress) {
                             currentProgress(item);
                         }

@@ -57,13 +57,14 @@ export default class Scanner {
 
         let item: Documents;
         let stats: fs.Stats;
+        const defaultReturn = { path: paths.normalize(path), size: 0 };
         try {
             stats = await fs.promises.stat(paths.join(path));
         }
         catch (e: any) {
             //I return an error code with a size of 0 because if I return null then there would be no size to calculate.
             //Which would then cause an error.
-            return { path: path, size: 0 };
+            return defaultReturn;
         }
 
         if (stats.isDirectory()) {
@@ -73,7 +74,7 @@ export default class Scanner {
             try {
                 dir = await fs.promises.readdir(path);
             } catch (e: any) {
-                return { path: path, size: 0 };
+                return defaultReturn;
             }
 
             item.path = paths.normalize(path);
@@ -140,7 +141,7 @@ export default class Scanner {
             catch (e: any) {
                 //I return an error code with a size of 0 because if I return null then there would be no size to calculate.
                 //Which would then cause an error.
-                return { path: path, size: 0 };
+                return defaultReturn;
             }
             item.isSymbolicLink = lstats.isSymbolicLink();
 

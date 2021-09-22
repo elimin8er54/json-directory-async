@@ -1,4 +1,6 @@
-import { Scanner, Documents } from '../src/dist';
+import { Scanner, Documents } from '../src';
+//For you it would be
+//import { Scanner, Documents } from 'json-directory-async';
 
 const scan = new Scanner({ showExtension: true, showSize: true, showType: true, showSymbolicLink: true, showDepth: true, stats: ["dev", "size"] });
 
