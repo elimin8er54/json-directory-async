@@ -11,9 +11,17 @@ describe('json-directory-async', () => {
 
         expect(tree).to.be.an('object');
 
-
-        console.log(JSON.stringify(tree));
     });
+
+    it('should return a default object due to file permission errors', async () => {
+        const scan = new Scanner();
+        const tree = await scan.scan("./test/tree/AFolder/Permissions");
+        const defaultObject = { path: paths.normalize('./test/tree/AFolder/Permissions'), size: 0 };
+
+        expect(tree).to.deep.equals(defaultObject);
+    })
+
+
 
     it('should return a Promise', async () => {
         const scan = new Scanner();
@@ -38,13 +46,35 @@ describe('json-directory-async', () => {
         expect(tree).to.have.property("isSymbolicLink", true);
     });
 
-    it('should return dummy object with size 0 and path', async () => {
+    it('should return same object', async () => {
         const scan = new Scanner({ showSymbolicLink: true });
-        const path = paths.normalize("./test/tree/EmptyFolder");
+        const path = paths.normalize("./test/tree/WouldBeEmptyIfGItLet");
         const tree = await scan.scan(path);
 
-        expect(tree).to.have.property("size", 0);
-        expect(tree).to.have.property("path", path);
+
+        const expectedResult = {
+            path: paths.normalize('test/tree/WouldBeEmptyIfGItLet'),
+            children: [
+                {
+                    path: paths.normalize('test/tree/WouldBeEmptyIfGItLet/.gitkeep'),
+                    size: 0,
+                    sizeFormatted: '0 B',
+                    extension: '',
+                    type: 'file',
+                    name: '.gitkeep',
+                    isSymbolicLink: false
+                }
+            ],
+            size: 0,
+            sizeFormatted: '0 B',
+            type: 'folder',
+            name: 'WouldBeEmptyIfGItLet',
+            isSymbolicLink: false
+        }
+
+
+        expect(tree).to.deep.equals(expectedResult);
+
     });
 
     it('should have all stat keys', async () => {
