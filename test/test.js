@@ -53,10 +53,10 @@ describe('json-directory-async', () => {
 
 
         const expectedResult = {
-            path: 'test\\tree\\WouldBeEmptyIfGItLet',
+            path: paths.normalize('test/tree/WouldBeEmptyIfGItLet'),
             children: [
                 {
-                    path: 'test\\tree\\WouldBeEmptyIfGItLet\\.gitkeep',
+                    path: paths.normalize('test/tree/WouldBeEmptyIfGItLet/.gitkeep'),
                     size: 0,
                     sizeFormatted: '0 B',
                     extension: '',
