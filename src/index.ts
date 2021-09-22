@@ -1,2 +1,2 @@
-export { default as Scanner } from './Scanner';
+module.exports = require('./Scanner');
 export { Documents, Folders, Files, Options } from './Util';
