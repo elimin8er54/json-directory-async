@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Scan your directories and output as json",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./src/dist/index.js"
   },
   "scripts": {
     "build": "tsc -p src",
@@ -21,7 +21,7 @@
     "directory",
     "scan"
   ],
-  "main": "src/dist/main.js",
+  "main": "src/dist/index.js",
   "types": "src/dist/index.d.ts",
   "license": "MIT",
   "homepage": "https://github.com/elimin8er54/json-directory-async",

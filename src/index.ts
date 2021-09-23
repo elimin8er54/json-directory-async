@@ -1,4 +1,2 @@
-const Scanner = require('./Scanner')
-
-module.exports = { Scanner: Scanner };
+export { default as Scanner } from './Scanner';
 export { Documents, Folders, Files, Options } from './Util';

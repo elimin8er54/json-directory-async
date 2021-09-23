@@ -5,7 +5,7 @@ import { Util, Callback, Documents, ItemStats, Options, Type } from "./Util";
 
 //Thank you Typescript for forcing me to reformat the code properly with all the errors it gives me.
 
-module.exports = class Scanner {
+export default class Scanner {
 
     showSymbolicLink: boolean = false;
     showDepth: boolean = false;
