@@ -1,4 +1,3 @@
-
 import * as fs from 'fs';
 import paths from "path";
 import { Util, Callback, Documents, ItemStats, Options, Type } from "./Util";
