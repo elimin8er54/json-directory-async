@@ -35,12 +35,15 @@ describe("json-directory-async", () => {
     expect(tree).to.not.have.key("stats");
   });
 
-  it("should have symbolic link", async () => {
-    const scan = new Scanner({ showSymbolicLink: true });
-    const tree = await scan.scan("./test/tree/AFolder/wowsymlink.js");
+  if (process.platform !== "win32") {
+    //Symlinks break when cloning from windows.
+    it("should have symbolic link", async () => {
+      const scan = new Scanner({ showSymbolicLink: true });
+      const tree = await scan.scan("./test/tree/AFolder/wowsymlink.js");
 
-    expect(tree).to.have.property("isSymbolicLink", true);
-  });
+      expect(tree).to.have.property("isSymbolicLink", true);
+    });
+  }
 
   it("should return same object", async () => {
     const scan = new Scanner({ showSymbolicLink: true });
