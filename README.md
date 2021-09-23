@@ -23,6 +23,8 @@ import { Scanner } from "json-directory-async";
 const scan = new Scanner("C://Users");
 scan.scan("C://Users").then((json) => {
   console.log(json);
+  //or If you want it as a string
+  console.log(JSON.parse(json));
 });
 
 //Typescript
@@ -31,6 +33,8 @@ import type { Documents } from "json-directory-async";
 const scan = new Scanner("C://Users");
 scan.scan("C://Users").then((json: Documents) => {
   console.log(json);
+  //or If you want it as a string
+  console.log(JSON.parse(json));
 });
 ```
 
