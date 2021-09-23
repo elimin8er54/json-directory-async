@@ -34,8 +34,6 @@ describe("json-directory-async", () => {
         console.log(tree);
         expect(tree).to.have.all.key("path", "children");
 
-        console.log(tree);
-
     });
 
 
