@@ -16,17 +16,17 @@ export default class Scanner {
 
     constructor(options?: Options) {
         if (options) {
-            if (options.showSymbolicLink)
+            if (options.showSymbolicLink !== undefined)
                 this.showSymbolicLink = options.showSymbolicLink;
-            if (options.showSize)
+            if (options.showSize !== undefined)
                 this.showSize = options.showSize;
-            if (options.showType)
+            if (options.showType !== undefined)
                 this.showType = options.showType;
-            if (options.showExtension)
+            if (options.showExtension !== undefined)
                 this.showExtension = options.showExtension;
-            if (options.showDepth)
+            if (options.showDepth !== undefined)
                 this.showDepth = options.showDepth;
-            if (options.showName)
+            if (options.showName !== undefined)
                 this.showName = options.showName;
             if (options.stats)
                 this.itemStats = options.stats

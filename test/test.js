@@ -1,6 +1,7 @@
 const { Scanner } = require("../src/dist");
 const { expect } = require("chai");
 const paths = require("path");
+const { exitCode } = require("process");
 
 describe("json-directory-async", () => {
     it("should return an Object", async () => {
@@ -20,6 +21,23 @@ describe("json-directory-async", () => {
 
         expect(tree).to.deep.equals(defaultObject);
     });
+
+    it("should not error even though there is no size to calculate", async () => {
+        const scan = new Scanner({ showSize: false, showDepth: true, showType: false });
+        await scan.scan("./test/tree/");
+
+    });
+
+    it("should only have the path key and children", async () => {
+        const scan = new Scanner({ showSize: false, showDepth: false, showType: false, showExtension: false, showName: false, showSymbolicLink: false });
+        const tree = await scan.scan("./test/tree/");
+        console.log(tree);
+        expect(tree).to.have.all.key("path", "children");
+
+        console.log(tree);
+
+    });
+
 
     it("should return a Promise", async () => {
         const scan = new Scanner();
@@ -131,4 +149,6 @@ describe("json-directory-async", () => {
 
         expect(callbackCount).to.equal(TOTAL);
     });
+
+
 });
