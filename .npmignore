@@ -2,3 +2,7 @@ node_modules
 yarn.lock
 .gitignore
 .travis.yml
+src/index.ts
+src/Scanner.ts
+src/tsconfig.json
+src/Utils.ts
