@@ -1,6 +1,6 @@
 {
   "name": "json-directory-async",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Scan your directories and output as json",
   "exports": {
     ".": "./src/dist/index.js"
