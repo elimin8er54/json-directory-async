@@ -5,4 +5,8 @@ yarn.lock
 src/index.ts
 src/Scanner.ts
 src/tsconfig.json
-src/Utils.ts
+src/Util.ts
+.github
+example
+test
+README.md
